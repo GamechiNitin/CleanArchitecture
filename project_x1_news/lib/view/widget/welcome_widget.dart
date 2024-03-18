@@ -28,7 +28,7 @@ class WelcomeWidget extends StatelessWidget {
           baseColor: kPrimaryColor,
           highlightColor: kBlueColor,
           child: Text(
-            "Welcome to Dash!",
+            "Welcome to Flutter News!",
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.displayLarge?.copyWith(
                   color: kBlueColor,

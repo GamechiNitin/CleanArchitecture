@@ -4,20 +4,21 @@ import 'package:project_x1_news/utils/app_colors.dart';
 import 'package:project_x1_news/utils/app_string.dart';
 import 'package:project_x1_news/utils/dimens.dart';
 import 'package:project_x1_news/utils/helper.dart';
+import 'package:project_x1_news/view/features/auth/presentation/signup_screen.dart';
 import 'package:project_x1_news/view/widget/button_widget.dart';
 import 'package:project_x1_news/view/widget/social_button.dart';
 import 'package:project_x1_news/view/widget/textform_widget.dart';
 import 'package:project_x1_news/view/widget/welcome_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
-class LogInPage extends StatefulWidget {
-  const LogInPage({super.key});
+class LogInScreen extends StatefulWidget {
+  const LogInScreen({super.key});
 
   @override
-  State<LogInPage> createState() => _LogInPageState();
+  State<LogInScreen> createState() => _LogInScreenState();
 }
 
-class _LogInPageState extends State<LogInPage> {
+class _LogInScreenState extends State<LogInScreen> {
   TextEditingController userNameController = TextEditingController();
 
   TextEditingController emailIdController = TextEditingController();
@@ -60,12 +61,12 @@ class _LogInPageState extends State<LogInPage> {
   }
 
   void gotoSignUpPage() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const SignUpPage(),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SignUpScreen(),
+      ),
+    );
   }
 
   @override
