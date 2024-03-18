@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:project_x1_news/utils/app_colors.dart';
 
+import 'core/error/secrets.dart';
 import 'view/features/auth/presentation/login_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(url: AppSecrets.sKr, anonKey: AppSecrets.anon);
   runApp(const MyApp());
 }
 
