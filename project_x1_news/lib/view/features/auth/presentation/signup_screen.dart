@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:project_x1_news/utils/app_assets.dart';
 import 'package:project_x1_news/utils/app_colors.dart';
 import 'package:project_x1_news/utils/app_string.dart';
 import 'package:project_x1_news/utils/dimens.dart';
 import 'package:project_x1_news/utils/helper.dart';
+import 'package:project_x1_news/view/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:project_x1_news/view/widget/button_widget.dart';
 import 'package:project_x1_news/view/widget/social_button.dart';
 import 'package:project_x1_news/view/widget/textform_widget.dart';
@@ -88,6 +90,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    TextFormWidget(
+                      textInputAction: TextInputAction.next,
+                      controller: userNameController,
+                      focusNode: userNameFn,
+                      label: 'Enter name ',
+                      hint: 'Ex. dash',
+                      prefixIcon: Icons.person,
+                      errorText: userNameErrorText,
+                      onEditingComplete: () {
+                        if (userNameController.text.isEmpty) {
+                          userNameErrorText = 'Enter the name';
+                        } else {
+                          userNameErrorText = null;
+                        }
+                        _notify();
+                      },
+                      validator: (val) {
+                        if (val == null || val.isEmpty) {
+                          userNameErrorText = 'Enter the name';
+                          return emailErrorText;
+                        } else {
+                          userNameErrorText = null;
+                          return emailErrorText;
+                        }
+                      },
+                      onChanged: (val) {
+                        if (val.isEmpty) {
+                          userNameErrorText = 'Enter the name';
+                        } else {
+                          userNameErrorText = null;
+                        }
+                        _notify();
+                      },
+                    ),
+                    const SizedBox(height: testFeildPadding),
                     TextFormWidget(
                       textInputAction: TextInputAction.next,
                       controller: emailIdController,
@@ -204,11 +241,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _formKey.currentState?.validate();
                         if (_formKey.currentState != null &&
                             _formKey.currentState!.validate()) {
-                          // UserModel userModel = UserModel(
-                          //   email: emailIdController.text.trim(),
-                          //   password: passwordController.text.trim(),
-                          // );
-                          // logInBloc.add(LogInToAccountEvent(userModel));
+                          context.read<AuthBloc>().add(
+                                AuthSignUpEvent(
+                                  name: userNameController.text.trim(),
+                                  email: emailIdController.text.trim(),
+                                  password: passwordController.text.trim(),
+                                ),
+                              );
                         }
                       },
                     ),
