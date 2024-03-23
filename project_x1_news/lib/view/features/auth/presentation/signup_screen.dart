@@ -8,6 +8,7 @@ import 'package:project_x1_news/utils/app_string.dart';
 import 'package:project_x1_news/utils/dimens.dart';
 import 'package:project_x1_news/utils/helper.dart';
 import 'package:project_x1_news/view/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:project_x1_news/view/features/auth/presentation/login_screen.dart';
 import 'package:project_x1_news/view/widget/button_widget.dart';
 import 'package:project_x1_news/view/widget/social_button.dart';
 import 'package:project_x1_news/view/widget/textform_widget.dart';
@@ -52,24 +53,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  void gotoForgotPasswordScreen() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => ForgotPasswordPage(
-    //       email: emailIdController.text.trim(),
-    //     ),
-    //   ),
-    // );
-  }
-
-  void gotoSignUpPage() {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => const SignUpPage(),
-    //   ),
-    // );
+  void gotoLogIn() {
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => const LogInScreen()),
+      (route) => false,
+    );
   }
 
   @override
@@ -88,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             showSnackBar(context, state.message);
           }
           if (state is SuccessAuth) {
-            Navigator.pop(context);
+            gotoLogIn();
           }
         },
         builder: (context, state) {
