@@ -10,7 +10,7 @@ final class AuthInitial extends AuthState {}
 final class LoadingAuth extends AuthState {}
 
 final class SuccessAuth extends AuthState {
-  final String uid;
+  final User uid;
 
   const SuccessAuth(this.uid);
 }

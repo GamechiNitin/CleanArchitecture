@@ -11,6 +11,7 @@ import 'core/error/secrets.dart';
 final serviceLocator = GetIt.instance;
 
 Future<void> initDependencies() async {
+  _initAuth();
   final Supabase supabase = await Supabase.initialize(
     url: AppSecrets.secret,
     anonKey: AppSecrets.anon,
