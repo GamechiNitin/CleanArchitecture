@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,10 +28,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         password: event.password,
       ),
     );
-
-    response.fold(
-      (l) => emit(FailureAuth(l.message)),
-      (r) => emit(SuccessAuth(r)),
-    );
+    log(response.toString());
+    response.fold((l) {
+      emit(StopLoadingAuth());
+      emit(FailureAuth(l.message));
+    }, (r) {
+      emit(StopLoadingAuth());
+      emit(SuccessAuth(r));
+    });
   }
 }
