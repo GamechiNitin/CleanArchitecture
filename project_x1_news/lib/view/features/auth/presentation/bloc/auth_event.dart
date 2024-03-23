@@ -24,3 +24,5 @@ final class AuthSignInEvent extends AuthEvent {
     required this.password,
   });
 }
+
+final class AuthSessionEvent extends AuthEvent {}
