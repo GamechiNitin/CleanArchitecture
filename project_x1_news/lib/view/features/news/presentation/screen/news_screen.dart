@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:project_x1_news/view/features/blog/presentation/widget/news_card_widget.dart';
+import 'package:project_x1_news/view/features/news/presentation/widget/news_card_widget.dart';
 
 import 'add_news_screen.dart';
 

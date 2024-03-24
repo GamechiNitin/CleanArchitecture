@@ -1,7 +1,7 @@
 import 'package:fpdart/fpdart.dart';
 import 'package:project_x1_news/core/error/exceptions.dart';
 import 'package:project_x1_news/core/error/failured.dart';
-import 'package:project_x1_news/view/features/auth/data/src/remote_data_source.dart';
+import 'package:project_x1_news/view/features/auth/data/src/auth_remote_data_source.dart';
 import 'package:project_x1_news/core/enities/user.dart';
 import 'package:project_x1_news/view/features/auth/domain/repository/auth_repository.dart';
 

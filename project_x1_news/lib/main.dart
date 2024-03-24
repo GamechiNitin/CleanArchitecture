@@ -5,6 +5,7 @@ import 'package:project_x1_news/init_dependencies.dart';
 import 'package:project_x1_news/utils/app_colors.dart';
 import 'package:project_x1_news/view/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:project_x1_news/view/features/home/presentation/home_screen.dart';
+import 'package:project_x1_news/view/features/news/presentation/bloc/news_bloc.dart';
 import 'view/features/auth/presentation/login_screen.dart';
 
 Future<void> main() async {
@@ -14,6 +15,7 @@ Future<void> main() async {
     providers: [
       BlocProvider(create: (context) => serviceLocator<AppUserCubit>()),
       BlocProvider(create: (context) => serviceLocator<AuthBloc>()),
+      BlocProvider(create: (context) => serviceLocator<NewsBloc>()),
     ],
     child: const MyApp(),
   ));

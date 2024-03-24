@@ -8,7 +8,7 @@ import 'package:project_x1_news/utils/app_string.dart';
 import 'package:project_x1_news/utils/dimens.dart';
 import 'package:project_x1_news/utils/helper.dart';
 import 'package:project_x1_news/view/features/auth/presentation/signup_screen.dart';
-import 'package:project_x1_news/view/features/blog/presentation/screen/news_screen.dart';
+import 'package:project_x1_news/view/features/news/presentation/screen/news_screen.dart';
 import 'package:project_x1_news/view/widget/button_widget.dart';
 import 'package:project_x1_news/view/widget/social_button.dart';
 import 'package:project_x1_news/view/widget/textform_widget.dart';
