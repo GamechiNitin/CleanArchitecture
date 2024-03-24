@@ -8,7 +8,7 @@ import 'package:project_x1_news/utils/app_string.dart';
 import 'package:project_x1_news/utils/dimens.dart';
 import 'package:project_x1_news/utils/helper.dart';
 import 'package:project_x1_news/view/features/auth/presentation/signup_screen.dart';
-import 'package:project_x1_news/view/features/home/presentation/home_screen.dart';
+import 'package:project_x1_news/view/features/blog/presentation/screen/news_screen.dart';
 import 'package:project_x1_news/view/widget/button_widget.dart';
 import 'package:project_x1_news/view/widget/social_button.dart';
 import 'package:project_x1_news/view/widget/textform_widget.dart';
@@ -76,10 +76,9 @@ class _LogInScreenState extends State<LogInScreen> {
   }
 
   void gotoHomePage() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const HomeScreen(),
-      ),
+    Navigator.of(context).pushAndRemoveUntil(
+      MaterialPageRoute(builder: (context) => const NewsScreen()),
+      (route) => false,
     );
   }
 
@@ -177,7 +176,7 @@ class _LogInScreenState extends State<LogInScreen> {
                             _notify();
                           },
                         ),
-                        const SizedBox(height: testFeildPadding),
+                        const SizedBox(height: textFieldPadding),
                         TextFormWidget(
                           textInputAction: TextInputAction.done,
                           maxLines: 1,
@@ -260,7 +259,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                         ButtonWidget(
                           margin: const EdgeInsets.symmetric(
-                              vertical: testFeildPadding),
+                              vertical: textFieldPadding),
                           text: 'Log In',
                           onTap: () {
                             passwordFn.unfocus();

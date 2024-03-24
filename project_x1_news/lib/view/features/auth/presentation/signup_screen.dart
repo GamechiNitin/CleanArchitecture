@@ -125,7 +125,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             _notify();
                           },
                         ),
-                        const SizedBox(height: testFeildPadding),
+                        const SizedBox(height: textFieldPadding),
                         TextFormWidget(
                           textInputAction: TextInputAction.next,
                           controller: emailIdController,
@@ -170,7 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             _notify();
                           },
                         ),
-                        const SizedBox(height: testFeildPadding),
+                        const SizedBox(height: textFieldPadding),
                         TextFormWidget(
                           textInputAction: TextInputAction.done,
                           maxLines: 1,
@@ -238,7 +238,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                         ButtonWidget(
                           margin: const EdgeInsets.symmetric(
-                              vertical: testFeildPadding),
+                              vertical: textFieldPadding),
                           text: 'Sign Up',
                           onTap: () {
                             passwordFn.unfocus();

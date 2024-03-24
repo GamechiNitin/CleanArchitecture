@@ -13,4 +13,4 @@ const double size24 = 24.0;
 
 const double iconSize25 = 25.0;
 const double iconSize30 = 30.0;
-const double testFeildPadding = 12.0;
+const double textFieldPadding = 12.0;
