@@ -42,4 +42,15 @@ class NewsRepositoryImpl implements NewsRepository {
       return left(Failure(message: e.message));
     }
   }
+
+  @override
+  Future<Either<Failure, List<News>>> getNewsData() async {
+    try {
+      final data = await remoteDataSource.getNewsListData();
+
+      return right(data);
+    } on ServerException catch (e) {
+      return left(Failure(message: e.message));
+    }
+  }
 }

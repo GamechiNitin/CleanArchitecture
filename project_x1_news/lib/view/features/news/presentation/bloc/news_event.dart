@@ -3,6 +3,8 @@ part of 'news_bloc.dart';
 @immutable
 sealed class NewsEvent {}
 
+final class GetNewsListEvent extends NewsEvent {}
+
 final class UploadNewsEvent extends NewsEvent {
   final File image;
   final String title;

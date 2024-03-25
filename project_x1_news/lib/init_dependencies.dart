@@ -10,6 +10,7 @@ import 'package:project_x1_news/view/features/auth/presentation/bloc/auth_bloc.d
 import 'package:project_x1_news/view/features/news/data/repo/news_repo_impl.dart';
 import 'package:project_x1_news/view/features/news/data/src/news_remote_data_source.dart';
 import 'package:project_x1_news/view/features/news/domain/repository/news_repository.dart';
+import 'package:project_x1_news/view/features/news/domain/usecases/get_news.dart';
 import 'package:project_x1_news/view/features/news/domain/usecases/upload_news.dart';
 import 'package:project_x1_news/view/features/news/presentation/bloc/news_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -65,6 +66,12 @@ void _initNews() {
     )
     // UseCase
     ..registerFactory(() => UploadNewsUseCase(serviceLocator()))
+    ..registerFactory(() => GetNewsUseCase(serviceLocator()))
     // Bloc
-    ..registerLazySingleton<NewsBloc>(() => NewsBloc(serviceLocator()));
+    ..registerLazySingleton<NewsBloc>(
+      () => NewsBloc(
+        getNewsUseCase: serviceLocator(),
+        uploadNewsUseCase: serviceLocator(),
+      ),
+    );
 }

@@ -8,6 +8,7 @@ class NewsModel extends News {
     required super.content,
     required super.imageUrl,
     required super.topic,
+    super.posterName,
     super.updateAt,
   });
 
@@ -41,6 +42,7 @@ class NewsModel extends News {
     String? content,
     String? imageUrl,
     List<String>? topic,
+    String? posterName,
     DateTime? updateAt,
   }) {
     return NewsModel(
@@ -51,6 +53,7 @@ class NewsModel extends News {
       imageUrl: imageUrl ?? this.imageUrl,
       topic: topic ?? this.topic,
       updateAt: updateAt ?? this.updateAt,
+      posterName: posterName ?? this.posterName,
     );
   }
 }

@@ -12,4 +12,5 @@ abstract interface class NewsRepository {
     required String posterId,
     required List<String> topic,
   });
+  Future<Either<Failure, List<News>>> getNewsData();
 }

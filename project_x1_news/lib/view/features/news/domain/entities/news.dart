@@ -4,10 +4,12 @@ class News {
   final String title;
   final String content;
   final String imageUrl;
+  final String? posterName;
   final List<String>? topic;
   final DateTime? updateAt;
 
   News({
+    this.posterName,
     required this.id,
     required this.posterId,
     required this.title,

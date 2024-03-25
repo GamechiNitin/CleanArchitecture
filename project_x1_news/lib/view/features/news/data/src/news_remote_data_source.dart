@@ -11,6 +11,8 @@ abstract interface class NewsRemoteDataSource {
     required NewsModel newsModel,
     required File image,
   });
+
+  Future<List<NewsModel>> getNewsListData();
 }
 
 class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
@@ -31,8 +33,10 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
   }
 
   @override
-  Future<String> uploadNewsImage(
-      {required NewsModel newsModel, required File image}) async {
+  Future<String> uploadNewsImage({
+    required NewsModel newsModel,
+    required File image,
+  }) async {
     try {
       await supabaseClient.storage.from('news_images').upload(
             newsModel.id,
@@ -41,6 +45,22 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
       return supabaseClient.storage
           .from('news_images')
           .getPublicUrl(newsModel.id);
+    } catch (e) {
+      log(e.toString());
+      throw ServerException("$e");
+    }
+  }
+
+  @override
+  Future<List<NewsModel>> getNewsListData() async {
+    try {
+      final response =
+          await supabaseClient.from('news').select('*,profiles (name)');
+
+      return response
+          .map((e) =>
+              NewsModel.fromJson(e).copyWith(posterName: e['profiles']['name']))
+          .toList();
     } catch (e) {
       log(e.toString());
       throw ServerException("$e");

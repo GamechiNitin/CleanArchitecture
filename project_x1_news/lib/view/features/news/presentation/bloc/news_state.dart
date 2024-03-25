@@ -17,6 +17,12 @@ final class SuccessNews extends NewsActionState {
   SuccessNews(this.uid);
 }
 
+final class NewsListDataState extends NewsActionState {
+  final List<News> data;
+
+  NewsListDataState(this.data);
+}
+
 final class FailureNews extends NewsActionState {
   final String message;
 
