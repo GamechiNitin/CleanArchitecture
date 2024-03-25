@@ -26,6 +26,8 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
           await supabaseClient.from('news').insert(newsModel.toJson()).select();
 
       return NewsModel.fromJson(response.first);
+    } on PostgrestException catch (e) {
+      throw ServerException("$e");
     } catch (e) {
       log(e.toString());
       throw ServerException("$e");
@@ -45,6 +47,8 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
       return supabaseClient.storage
           .from('news_images')
           .getPublicUrl(newsModel.id);
+    } on StorageException catch (e) {
+      throw ServerException("$e");
     } catch (e) {
       log(e.toString());
       throw ServerException("$e");
@@ -61,6 +65,8 @@ class NewsRemoteDataSourceImpl implements NewsRemoteDataSource {
           .map((e) =>
               NewsModel.fromJson(e).copyWith(posterName: e['profiles']['name']))
           .toList();
+    } on PostgrestException catch (e) {
+      throw ServerException("$e");
     } catch (e) {
       log(e.toString());
       throw ServerException("$e");

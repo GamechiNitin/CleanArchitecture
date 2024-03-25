@@ -21,7 +21,15 @@ class AddNewsScreen extends StatefulWidget {
 }
 
 class _AddNewsScreenState extends State<AddNewsScreen> {
-  List<String> generList = ["Tech", "Auto", "Entertainment", "Sports"];
+  List<String> generList = [
+    "Tech",
+    "Auto",
+    "Entertainment",
+    "Sports",
+    'Flutter',
+    "Cricket",
+    "IT"
+  ];
   List<String> selectedGenersList = [];
   TextEditingController contentController = TextEditingController();
 
