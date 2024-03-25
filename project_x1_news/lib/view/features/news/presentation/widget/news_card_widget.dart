@@ -9,7 +9,9 @@ class NewsCardWidget extends StatelessWidget {
     this.color,
     this.topic,
     this.title,
+    this.onTap,
   });
+  final VoidCallback? onTap;
   final String? content;
   final String? title;
   final List<String>? topic;

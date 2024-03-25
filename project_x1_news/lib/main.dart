@@ -40,9 +40,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter News',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor),
-        useMaterial3: true,
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: kPrimaryColor),
+          useMaterial3: true,
+          appBarTheme: const AppBarTheme(surfaceTintColor: Colors.transparent)),
       debugShowCheckedModeBanner: false,
       home: BlocSelector<AppUserCubit, AppUserState, bool>(
         selector: (state) => state is AppUserLoggedIn,
